@@ -31,6 +31,9 @@ jobs:
         with:
           go-version: '1.22'
 
+      - name: Debug - Find main.go
+        run: find . -name "main.go" | head -20
+
       - name: Build Windows Binary
         env:
           GOOS: windows
