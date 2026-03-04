@@ -34,11 +34,12 @@ jobs:
       - name: Build Windows Binary
         env:
           GOOS: windows
-          GOARCH: amd64  # 这就是你需要的 x64 架构
-          CGO_ENABLED: 0 # 禁用 CGO 以确保生成的 .exe 是静态链接的，兼容性最好
+          GOARCH: amd64
+          CGO_ENABLED: 0
         run: |
-          # -ldflags "-s -w" 用于压缩体积，减小 20%-30% 的文件大小
-          go build -ldflags="-s -w" -o memos-windows-x64.exe .
+          # 注意：Memos 的 main 函数通常在 ./bin/memos/main.go
+          # 我们直接指定构建目标路径
+          go build -ldflags="-s -w" -o memos-windows-x64.exe ./bin/memos/main.go
 
       # 3. 将编译好的 .exe 上传到 GitHub 界面供下载
       - name: Upload Artifact
