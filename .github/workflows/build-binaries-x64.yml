@@ -25,6 +25,11 @@ jobs:
           pnpm build
           cd ..
 
+      - name: Copy Frontend to Embed Path
+        run: |
+          mkdir -p ./server/router/frontend/dist
+          cp -r ./web/dist/* ./server/router/frontend/dist/
+
       # 2. 构建 Go 后端 (关键步骤：交叉编译)
       - name: Setup Go
         uses: actions/setup-go@v5
