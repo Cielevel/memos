@@ -39,7 +39,7 @@ jobs:
         run: |
           # 注意：Memos 的 main 函数通常在 ./bin/memos/main.go
           # 我们直接指定构建目标路径
-          go build -ldflags="-s -w" -o memos-windows-x64.exe ./cmd/memos/main.go .
+          go build -ldflags="-s -w" -o memos-windows-x64.exe .
 
       # 3. 将编译好的 .exe 上传到 GitHub 界面供下载
       - name: Upload Artifact
