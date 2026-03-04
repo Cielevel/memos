@@ -37,6 +37,9 @@ jobs:
           echo "---"
           ls web/dist 2>/dev/null || echo "web/dist not found"
 
+      - name: Debug - Show frontend embed
+        run: cat ./server/router/frontend/frontend.go
+
       - name: Build Windows Binary
         env:
           GOOS: windows
