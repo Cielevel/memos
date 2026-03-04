@@ -30,6 +30,13 @@ jobs:
           mkdir -p ./server/router/frontend/dist
           cp -r ./web/dist/* ./server/router/frontend/dist/
 
+      - name: Debug - Verify embed path
+        run: |
+          echo "=== server/router/frontend/dist contents ==="
+          ls ./server/router/frontend/dist/
+          echo "=== index.html exists? ==="
+          cat ./server/router/frontend/dist/index.html | head -5
+
       # 2. 构建 Go 后端 (关键步骤：交叉编译)
       - name: Setup Go
         uses: actions/setup-go@v5
